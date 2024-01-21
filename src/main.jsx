@@ -1,54 +1,36 @@
 /* eslint-disable react/no-children-prop */
 import ReactDOM from "react-dom/client";
-import { mocks } from "./constants/mock";
+import { restaurants } from "./constants/mock";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <div>
-    <button
-      id={"button_1" + 1}
-      onClick={() => console.log("Hello")}
-      onMouseEnter={() => console.log("Hello, Students!")}
-      onMouseLeave={() => console.log("Bye, Students!")}
-    >
-      <span>Click me!</span>
-    </button>
-    <button>
-      <span>Click me!</span>
-    </button>
-    <button>
-      <span>Click me!</span>
-    </button>
+    <h1>{restaurants[0].name}</h1>
+    <h3>Меню</h3>
+    <ul>
+      <li>{restaurants[0].menu[0].name}</li>
+      <li>{restaurants[0].menu[1].name}</li>
+      <li>{restaurants[0].menu[2].name}</li>
+    </ul>
+    <h3>Отзывы</h3>
+    <ul>
+      <li>{restaurants[0].reviews[0].text}</li>
+      <li>{restaurants[0].reviews[1].text}</li>
+    </ul>
 
-    <div>
-      <div>
-        <p>Name: {mocks[0].name}</p>
-      </div>
-      <div>
-        <p>Name: {mocks[1].name}</p>
-      </div>
-    </div>
+    <h1>{restaurants[1].name}</h1>
+    <h3>Меню</h3>
+    <ul>
+      <li>{restaurants[1].menu[0].name}</li>
+      <li>{restaurants[1].menu[1].name}</li>
+    </ul>
+    <h3>Отзывы</h3>
+    <ul>
+      <li>{restaurants[1].reviews[0].text}</li>
+      <li>{restaurants[1].reviews[1].text}</li>
+      <li>{restaurants[1].reviews[2].text}</li>
+    </ul>
+
   </div>
 );
-
-// root.render(
-//   React.createElement("div", {
-//     children: [
-//       React.createElement("button", {
-//         children: React.createElement("span", {
-//           children: "Click Me!",
-//         }),
-//         onClick: () => console.log("Hello, Students!"),
-//         onMouseEnter: () => console.log("Hello, Students!"),
-//         onMouseLeave: () => console.log("Bye, Students!"),
-//       }),
-//       React.createElement("button", {
-//         children: React.createElement("span", { children: "Click Me!" }),
-//       }),
-//       React.createElement("button", {
-//         children: React.createElement("span", { children: "Click Me!" }),
-//       }),
-//     ],
-//   })
-// );
