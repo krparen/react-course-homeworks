@@ -1,5 +1,5 @@
-export const Dish = ({menu}) => {
+export const Dish = ({dish}) => {
     return (
-        <li>{menu.name}</li>
+        <div>{dish.name}</div>
     );
 };
