@@ -1,5 +1,5 @@
-import {Dish} from "./dish/component.jsx";
-import {Review} from "./review/component.jsx";
+import {Dish} from "../dish/component.jsx";
+import {Review} from "../review/component.jsx";
 
 export const Restaurant = ({restaurant}) => {
     return (
