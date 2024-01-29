@@ -1,4 +1,4 @@
-import {MenuEntry} from "./menu_entry/component.jsx";
+import {Dish} from "./dish/component.jsx";
 import {Review} from "./review/component.jsx";
 
 export const Restaurant = ({restaurant}) => {
@@ -8,7 +8,7 @@ export const Restaurant = ({restaurant}) => {
             <h3>Меню</h3>
             <ul>
                 {restaurant.menu.map((menuItem) => (
-                    <MenuEntry menu={menuItem}/>
+                    <Dish menu={menuItem}/>
                 ))}
             </ul>
             <h3>Отзывы</h3>

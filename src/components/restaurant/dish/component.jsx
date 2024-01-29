@@ -1,4 +1,4 @@
-export const MenuEntry = ({menu}) => {
+export const Dish = ({menu}) => {
     return (
         <li>{menu.name}</li>
     );
