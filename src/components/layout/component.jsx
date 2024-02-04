@@ -1,16 +1,17 @@
 import { Footer } from "../footer/component";
 import { Header } from "../header/component";
 import {Button} from "../button/button.jsx";
+import {Restaurant} from "../restaurant/component.jsx";
 
-export const Layout = ({ children }) => {
+export const Layout = ({ restaurants}) => {
     return (
         <div>
             <Header>
-                <Button text={"darova ebat"}/>
-                <Button text={"zdarova zaebal"}/>
-                <Button text={"ebat' moi lisiy cherep kakie lyudi"}/>
+                {restaurants.map(
+                    restaraunt => <Button text={restaraunt.name}/>
+                )}
             </Header>
-            <div>{children}</div>
+            <div><Restaurant restaurant={restaurants[0]}/></div>
             <Footer />
         </div>
     );
