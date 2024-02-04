@@ -11,3 +11,8 @@
     margin-left: 5px;
     margin-right: 5px;
 }
+
+.counter:disabled {
+    background-color: darkgrey;
+    border-color: grey;
+}
