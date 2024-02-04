@@ -8,7 +8,7 @@ export const Dishes = ({dishes: dishes}) => {
             <ul>
                 {dishes.map(dish =>
                     <li>
-                        <span><Dish dish={dish}/><Counter/></span>
+                        <div><Dish dish={dish}/></div>
                     </li>
                 )}
             </ul>

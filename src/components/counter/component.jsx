@@ -1,25 +1,22 @@
 import {Button} from "../button/component.jsx";
-import {useState} from "react";
 
-export const Counter = () => {
-
-    const [counter, setCounter] = useState(0);
-
-    return <span>
+export const Counter = ({value, min = 0, max = 5, onChange}) => {
+    
+    return <div>
         <Button
             text={"-"}
-            onClick={() => setCounter(counter - 1)}
-            isDisabled={counter <= 0}
+            onClick={() => onChange(value - 1)}
+            isDisabled={value <= min}
             viewVariant={"counter"}
         >
         </Button>
-        <span>{counter}</span>
+        {value}
         <Button
             text={"+"}
-            onClick={() => setCounter(counter + 1)}
-            isDisabled={counter >= 5}
+            onClick={() => onChange(value + 1)}
+            isDisabled={value >= max}
             viewVariant={"counter"}
         >
         </Button>
-    </span>
+    </div>
 }
