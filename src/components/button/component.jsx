@@ -2,13 +2,13 @@ import styles from "./styles.module.scss";
 import classNames from "classnames";
 
 const ButtonViewVariant = {
-    ["primary"]: styles.primary,
-    ["secondary"]: styles.secondary,
+    ["tab"]: styles.tab,
+    ["counter"]: styles.counter,
 }
 
 export const Button = ({text, onClick, isDisabled, viewVariant}) => {
     return <button
-        className={classNames(ButtonViewVariant[viewVariant] || ButtonViewVariant["primary"])}
+        className={classNames(ButtonViewVariant[viewVariant] || ButtonViewVariant["tab"])}
         onClick={onClick}
         disabled={isDisabled}
     >

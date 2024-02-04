@@ -10,7 +10,7 @@ export const Counter = () => {
             text={"-"}
             onClick={() => setCounter(counter - 1)}
             isDisabled={counter <= 0}
-            viewVariant={"secondary"}
+            viewVariant={"counter"}
         >
         </Button>
         <span>{counter}</span>
@@ -18,7 +18,7 @@ export const Counter = () => {
             text={"+"}
             onClick={() => setCounter(counter + 1)}
             isDisabled={counter >= 5}
-            viewVariant={"secondary"}
+            viewVariant={"counter"}
         >
         </Button>
     </span>

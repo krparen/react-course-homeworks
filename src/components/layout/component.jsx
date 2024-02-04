@@ -12,7 +12,7 @@ export const Layout = ({ restaurants}) => {
         <div>
             <Header>
                 {restaurants.map(
-                    restaurant => <Button text={restaurant.name} onClick={() => setState(restaurant)}/>
+                    restaurant => <Button text={restaurant.name} onClick={() => setState(restaurant)} viewVariant={"tab"}/>
                 )}
             </Header>
                 <Restaurant restaurant={state}/>
