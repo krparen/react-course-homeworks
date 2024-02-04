@@ -13,6 +13,5 @@
 }
 
 .counter:disabled {
-    background-color: darkgrey;
-    border-color: grey;
+    opacity: 0.5;
 }
