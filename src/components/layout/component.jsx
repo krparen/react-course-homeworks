@@ -1,6 +1,6 @@
 import { Footer } from "../footer/component";
 import { Header } from "../header/component";
-import {Button} from "../button/button.jsx";
+import {Button} from "../button/component.jsx";
 import {Restaurant} from "../restaurant/component.jsx";
 import {useState} from "react";
 

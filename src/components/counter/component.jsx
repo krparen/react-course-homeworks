@@ -1,4 +1,4 @@
-import {Button} from "../button/button.jsx";
+import {Button} from "../button/component.jsx";
 import {useState} from "react";
 
 export const Counter = () => {
@@ -9,13 +9,17 @@ export const Counter = () => {
         <Button
             text={"-"}
             onClick={() => setCounter(counter - 1)}
-            isDisabled={counter <= 0}>
+            isDisabled={counter <= 0}
+            viewVariant={"secondary"}
+        >
         </Button>
         <span>{counter}</span>
         <Button
             text={"+"}
             onClick={() => setCounter(counter + 1)}
-            isDisabled={counter >= 5}>
+            isDisabled={counter >= 5}
+            viewVariant={"secondary"}
+        >
         </Button>
     </span>
 }
