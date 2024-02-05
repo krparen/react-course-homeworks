@@ -1,21 +1,23 @@
 import { Footer } from "../footer/component";
 import { Header } from "../header/component";
-import {Button} from "../button/component.jsx";
 import {Restaurant} from "../restaurant/component.jsx";
 import {useState} from "react";
+import {RestaurantTabs} from "../restaurant-tabs/component.jsx";
 
 export const Layout = ({ restaurants}) => {
 
-    const [state, setState] = useState( restaurants[0] );
+    const [activeRestaurantId, setActiveRestaurantId] = useState( restaurants[0].id );
+    
+    const activeRestaurant = restaurants.find(
+        ({id}) => id === activeRestaurantId
+    );
     
     return (
         <div>
             <Header>
-                {restaurants.map(
-                    restaurant => <Button text={restaurant.name} onClick={() => setState(restaurant)} viewVariant={"tab"}/>
-                )}
+                <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}/>
             </Header>
-                <Restaurant restaurant={state}/>
+                <Restaurant restaurant={activeRestaurant}/>
             <Footer />
         </div>
     );
