@@ -1,4 +1,5 @@
 import {Dish} from "../dish/component.jsx";
+import {Counter} from "../counter/component.jsx";
 
 export const Dishes = ({dishes: dishes}) => {
     return (
@@ -6,7 +7,9 @@ export const Dishes = ({dishes: dishes}) => {
             <h3>Меню</h3>
             <ul>
                 {dishes.map(dish =>
-                    <li><Dish dish={dish}/></li>
+                    <li>
+                        <div><Dish dish={dish}/></div>
+                    </li>
                 )}
             </ul>
         </div>
