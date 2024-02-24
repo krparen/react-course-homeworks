@@ -45,7 +45,7 @@ export const ReviewForm = () => {
                     <input
                         type="text"
                         id="name"
-                        value={form.name}
+                        value={form?.name}
                         onChange={ (event) =>
                              dispatch({type: "setName", payload: event.target.value})
                         }
@@ -56,7 +56,7 @@ export const ReviewForm = () => {
                     <input
                         type="text"
                         id="text"
-                        value={form.text}
+                        value={form?.text}
                         onChange={ (event) =>
                             dispatch({type: "setText", payload: event.target.value})
                         }
@@ -69,7 +69,7 @@ export const ReviewForm = () => {
                         id="rating"
                         min={1}
                         max={5}
-                        value={form.rating}
+                        value={form?.rating}
                         onChange={ (event) =>
                             dispatch({type: "setRating", payload: Number(event.target.value)})
                         }
