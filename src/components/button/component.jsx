@@ -4,6 +4,7 @@ import classNames from "classnames";
 const ButtonViewVariant = {
     ["tab"]: styles.tab,
     ["counter"]: styles.counter,
+    ["login"]: styles.login,
 }
 
 export const Button = ({text, onClick, isDisabled, viewVariant}) => {

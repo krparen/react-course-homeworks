@@ -5,6 +5,7 @@ import {Restaurant} from "../../restaurant/component.jsx";
 import {Footer} from "../../footer/component.jsx";
 import {restaurants} from "../../../constants/mock.js";
 import {ReviewForm} from "../../review-form/component.jsx";
+import {Button} from "../../button/component.jsx";
 
 export const RestaurantPage = () => {
     const [activeRestaurantId, setActiveRestaurantId] = useState( restaurants[0].id );
@@ -16,6 +17,7 @@ export const RestaurantPage = () => {
     return (
         <div>
             <Header>
+                <button>Login</button>
                 <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}/>
             </Header>
             <Restaurant restaurant={activeRestaurant}/>
