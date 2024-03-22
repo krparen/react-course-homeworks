@@ -24,7 +24,10 @@ export const RestaurantPage = () => {
         <UserContext.Provider value={currentUser}>
             <div>
                 <Header>
-                    <LoginPanel onLogin={() => setCurrentUser(defaultUser)} onLogout={() => setCurrentUser(emptyUser)}></LoginPanel>
+                    <LoginPanel
+                        onLogin={() => setCurrentUser(defaultUser)}
+                        onLogout={() => setCurrentUser(emptyUser)}>
+                    </LoginPanel>
                     <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}/>
                 </Header>
                 <Restaurant restaurant={activeRestaurant}/>
