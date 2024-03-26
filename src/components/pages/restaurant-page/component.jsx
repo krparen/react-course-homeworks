@@ -16,17 +16,13 @@ export const RestaurantPage = () => {
     );
 
     const [currentUser, setCurrentUser] = useState({"name": "", "password": ""});
-
-    const defaultUser = {"name": "George", "password": "12345"}
-    const emptyUser = {"name": "", "password": ""}
+    const value = {currentUser, setCurrentUser};
 
     return (
-        <UserContext.Provider value={currentUser}>
+        <UserContext.Provider value={value}>
             <div>
                 <Header>
-                    <LoginPanel
-                        onLogin={() => setCurrentUser(defaultUser)}
-                        onLogout={() => setCurrentUser(emptyUser)}>
+                    <LoginPanel>
                     </LoginPanel>
                     <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}/>
                 </Header>
