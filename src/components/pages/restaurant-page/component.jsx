@@ -15,7 +15,7 @@ export const RestaurantPage = () => {
         ({id}) => id === activeRestaurantId
     );
 
-    const [currentUser, setCurrentUser] = useState({"name": "", "password": ""});
+    const [currentUser, setCurrentUser] = useState(undefined);
     const value = {currentUser, setCurrentUser};
 
     return (
