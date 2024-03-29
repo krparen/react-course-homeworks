@@ -7,12 +7,15 @@ const ButtonViewVariant = {
     ["login"]: styles.login,
 }
 
-export const Button = ({text, onClick, isDisabled, viewVariant}) => {
-    return <button
-        className={classNames(ButtonViewVariant[viewVariant] || ButtonViewVariant["tab"])}
-        onClick={onClick}
-        disabled={isDisabled}
-    >
-        {text}
-    </button>;
+export const Button = ({text, onClick, isDisabled, viewVariant, isVisible = true}) => {
+    return isVisible &&
+        (
+            <button
+                className={classNames(ButtonViewVariant[viewVariant] || ButtonViewVariant["tab"])}
+                onClick={onClick}
+                disabled={isDisabled}
+            >
+                {text}
+            </button>
+        );
 };
