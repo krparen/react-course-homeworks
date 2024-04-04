@@ -13,12 +13,12 @@ export const LoginPanel = () => {
             onClick={() => setCurrentUser(defaultUser)}
             isVisible={currentUser === undefined}>
         </Button>
-        {currentUser?.name}
         <Button
             text={"Logout"}
             viewVariant={"login"}
             onClick={() => setCurrentUser(undefined)}
             isVisible={currentUser !== undefined}>
         </Button>
+        <div>{currentUser?.name}</div>
     </div>
 }

@@ -27,7 +27,7 @@ export const RestaurantPage = () => {
                     <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}/>
                 </Header>
                 <Restaurant restaurant={activeRestaurant}/>
-                <ReviewForm/>
+                {currentUser !== undefined && <ReviewForm/>}
                 <Footer/>
             </div>
         </UserContext.Provider>
