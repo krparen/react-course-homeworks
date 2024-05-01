@@ -7,6 +7,8 @@ import {restaurants} from "../../../constants/mock.js";
 import {ReviewForm} from "../../review-form/component.jsx";
 import {UserContext} from "../../../contexts/user.js";
 import {LoginPanel} from "../../login-panel/component.jsx";
+import PortalExample from "../../login-modal/component.jsx";
+import styles from "./styles.module.scss";
 
 export const RestaurantPage = () => {
     const [activeRestaurantId, setActiveRestaurantId] = useState(restaurants[0].id);
@@ -24,6 +26,9 @@ export const RestaurantPage = () => {
                 <Header>
                     <LoginPanel>
                     </LoginPanel>
+                    <div className={styles.clippingContainer}>
+                        <PortalExample/>
+                    </div>
                     <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}/>
                 </Header>
                 <Restaurant restaurant={activeRestaurant}/>
