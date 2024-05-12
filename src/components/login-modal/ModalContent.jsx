@@ -4,7 +4,12 @@ export default function ModalContent({ onClose }) {
     return (
         <div className={styles.modal}>
             <div>Im a modal dialog</div>
-            <button onClick={onClose}>Close</button>
+            <div>
+                <button onClick={() => console.log("dratuti ya nenastoyashiy login")}>Login</button>
+            </div>
+            <div>
+                <button onClick={onClose}>Cancel</button>
+            </div>
         </div>
     );
 }
