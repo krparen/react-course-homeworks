@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
-import ModalContent from './ModalContent.jsx';
+import ModalContent from './modal-content.jsx';
 
 export default function PortalExample() {
     const [showModal, setShowModal] = useState(false);
