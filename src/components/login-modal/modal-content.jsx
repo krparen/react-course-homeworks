@@ -5,10 +5,10 @@ import {UserContext} from "../../contexts/user.js";
 export default function ModalContent({ onClose }) {
 
     const {currentUser, setCurrentUser} = useContext(UserContext);
-    const [userFromInput, setUserFromInput] = useState('');
+    const [userFromInput, setUserFromInput] = useState({"name": "", "password": ""});
     
     const handleUserFromInputChange = (event) => {
-        setUserFromInput(event.target.value);
+        setUserFromInput({"name": event.target.value, "password": "dummy password"});
     }
     
     const setUserInContextAndCloseModal = () => {
