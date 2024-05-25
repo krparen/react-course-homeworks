@@ -7,7 +7,7 @@ import {restaurants} from "../../../constants/mock.js";
 import {ReviewForm} from "../../review-form/component.jsx";
 import {UserContext} from "../../../contexts/user.js";
 import {LoginPanel} from "../../login-panel/component.jsx";
-import PortalExample from "../../login-modal/component.jsx";
+import LoginButtonAndPortal from "../../login-modal/component.jsx";
 import styles from "./styles.module.scss";
 
 export const RestaurantPage = () => {

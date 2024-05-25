@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import ModalContent from './modal-content.jsx';
 import {Button} from "../button/component.jsx";
 
-export default function PortalExample() {
+export default function LoginButtonAndPortal() {
     const [showModal, setShowModal] = useState(false);
     return (
         <div>
