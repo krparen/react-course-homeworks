@@ -26,9 +26,6 @@ export const RestaurantPage = () => {
                 <Header>
                     <LoginPanel>
                     </LoginPanel>
-                    <div className={styles.clippingContainer}>
-                        <PortalExample/>
-                    </div>
                     <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}/>
                 </Header>
                 <Restaurant restaurant={activeRestaurant}/>
