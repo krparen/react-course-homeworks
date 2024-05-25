@@ -1,21 +1,45 @@
 import styles from "./styles.module.scss";
-import {useContext, useState} from "react";
+import {useContext, useReducer, useState} from "react";
 import {UserContext} from "../../contexts/user.js";
 
-export default function ModalContent({ onClose }) {
+export default function ModalContent({onClose}) {
+
+    const BASE_INPUT_STATE = {username: "", email: ""};
+
+    const reducer = (state, {type, payload}) => {
+        switch (type) {
+            case "setUsername":
+                return {
+                    ...state,
+                    username: payload
+                }
+            case "setEmail":
+                return {
+                    ...state,
+                    email: payload
+                }
+            default:
+                return state;
+        }
+    }
 
     const {currentUser, setCurrentUser} = useContext(UserContext);
-    const [userFromInput, setUserFromInput] = useState({"name": "", "password": ""});
-    
-    const handleUserFromInputChange = (event) => {
-        setUserFromInput({"name": event.target.value, "password": "dummy password"});
-    }
-    
+    const [userFromReducer, dispatch] = useReducer(reducer, BASE_INPUT_STATE, () => {
+    });
+
     const setUserInContextAndCloseModal = () => {
-        setCurrentUser(userFromInput);
-        onClose();
+        console.log("user from reducer on click button moment: ", userFromReducer);
+        if (!userFromReducer.username) {
+            alert("Please fill USERNAME for login.");
+        } else if (!userFromReducer.email) {
+            alert("Please fill EMAIL for login.");
+        } else {
+            const temporaryIntermediateUser = {name: userFromReducer.username, password: userFromReducer.email}
+            setCurrentUser(temporaryIntermediateUser);
+            onClose();
+        }
     }
-    
+
     return (
         <div className={styles.modal}>
             <form>
@@ -24,7 +48,17 @@ export default function ModalContent({ onClose }) {
                     <input
                         type="text"
                         id="username"
-                        onChange={handleUserFromInputChange}
+                        value={userFromReducer?.username}
+                        onChange={(event) => dispatch({type: "setUsername", payload: event.target.value})}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="text"
+                        id="email"
+                        value={userFromReducer?.email}
+                        onChange={(event) => dispatch({type: "setEmail", payload: event.target.value})}
                     />
                 </div>
             </form>
