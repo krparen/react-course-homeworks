@@ -13,6 +13,6 @@ export const LoginPanel = () => {
             viewVariant={"login"}
             onClick={() => setCurrentUser(undefined)}>
         </Button>}
-        <div>{currentUser?.name}</div>
+        <div>{currentUser?.username}</div>
     </div>
 }

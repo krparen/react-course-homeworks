@@ -1,1 +1,1 @@
-export const defaultUser = {"name": "George", "password": "12345"}
+export const defaultUser = {username: "George", email: "mr.gosha@mail.ru"}

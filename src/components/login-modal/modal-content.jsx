@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import {useContext, useReducer, useState} from "react";
+import {useContext, useReducer} from "react";
 import {UserContext} from "../../contexts/user.js";
 
 export default function ModalContent({onClose}) {
@@ -34,8 +34,7 @@ export default function ModalContent({onClose}) {
         } else if (!userFromReducer.email) {
             alert("Please fill EMAIL for login.");
         } else {
-            const temporaryIntermediateUser = {name: userFromReducer.username, password: userFromReducer.email}
-            setCurrentUser(temporaryIntermediateUser);
+            setCurrentUser(userFromReducer);
             onClose();
         }
     }

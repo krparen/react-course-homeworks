@@ -47,7 +47,7 @@ export const ReviewForm = () => {
                         type="text"
                         id="name"
                         disabled={true}
-                        value={currentUser?.name}
+                        value={currentUser?.username}
                         onChange={ (event) =>
                              dispatch({type: "setName", payload: event.target.value})
                         }
