@@ -1,14 +1,12 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {Header} from "../../header/component.jsx";
 import {RestaurantTabs} from "../../restaurant-tabs/component.jsx";
 import {Restaurant} from "../../restaurant/component.jsx";
 import {Footer} from "../../footer/component.jsx";
 import {restaurants} from "../../../constants/mock.js";
 import {ReviewForm} from "../../review-form/component.jsx";
-import {UserContext} from "../../../contexts/user.js";
 import {LoginPanel} from "../../login-panel/component.jsx";
-import LoginButtonAndPortal from "../../login-modal/component.jsx";
-import styles from "./styles.module.scss";
+import {UserContext} from "../../../contexts/user.js";
 
 export const RestaurantPage = () => {
     const [activeRestaurantId, setActiveRestaurantId] = useState(restaurants[0].id);
@@ -17,11 +15,10 @@ export const RestaurantPage = () => {
         ({id}) => id === activeRestaurantId
     );
 
-    const [currentUser, setCurrentUser] = useState(undefined);
-    const value = {currentUser, setCurrentUser};
+    const {currentUser} = useContext(UserContext);
 
     return (
-        <UserContext.Provider value={value}>
+        
             <div>
                 <Header>
                     <LoginPanel>
@@ -32,6 +29,6 @@ export const RestaurantPage = () => {
                 {currentUser !== undefined && <ReviewForm/>}
                 <Footer/>
             </div>
-        </UserContext.Provider>
+        
     );
 }
