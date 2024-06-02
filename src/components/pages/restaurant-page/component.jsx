@@ -18,17 +18,15 @@ export const RestaurantPage = () => {
     const {currentUser} = useContext(UserContext);
 
     return (
-        
-            <div>
-                <Header>
-                    <LoginPanel>
-                    </LoginPanel>
-                    <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}/>
-                </Header>
-                <Restaurant restaurant={activeRestaurant}/>
-                {currentUser !== undefined && <ReviewForm/>}
-                <Footer/>
-            </div>
-        
+        <div>
+            <Header>
+                <LoginPanel>
+                </LoginPanel>
+                <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}/>
+            </Header>
+            <Restaurant restaurant={activeRestaurant}/>
+            {currentUser !== undefined && <ReviewForm/>}
+            <Footer/>
+        </div>
     );
 }
