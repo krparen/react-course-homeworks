@@ -4,12 +4,10 @@ import {useState} from "react";
 import {UserContext} from "./contexts/user.js";
 
 export const App = () => {
-
-    const [currentUser, setCurrentUser] = useState(undefined);
-    const value = {currentUser, setCurrentUser};
+    const [currentUser, setCurrentUser] = useState();
 
     return (
-        <UserContext.Provider value={value}>
+        <UserContext.Provider value={{currentUser, setCurrentUser}}>
             <Layout>
                 <RestaurantPage/>
             </Layout>
