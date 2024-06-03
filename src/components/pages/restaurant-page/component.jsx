@@ -5,7 +5,6 @@ import {Restaurant} from "../../restaurant/component.jsx";
 import {Footer} from "../../footer/component.jsx";
 import {restaurants} from "../../../constants/mock.js";
 import {ReviewForm} from "../../review-form/component.jsx";
-import {LoginPanel} from "../../login-panel/component.jsx";
 import {UserContext} from "../../../contexts/user.js";
 
 export const RestaurantPage = () => {
@@ -19,11 +18,8 @@ export const RestaurantPage = () => {
 
     return (
         <div>
-            <Header>
-                <LoginPanel>
-                </LoginPanel>
-                <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}/>
-            </Header>
+            <Header/>
+            <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}/>
             <Restaurant restaurant={activeRestaurant}/>
             {currentUser !== undefined && <ReviewForm/>}
             <Footer/>
