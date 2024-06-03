@@ -7,12 +7,15 @@ export const LoginPanel = () => {
     const {currentUser, setCurrentUser} = useContext(UserContext);
 
     return <div>
-        {currentUser === undefined && <LoginButtonAndPortal/>}
-        {currentUser !== undefined && <Button
-            text={"Logout"}
-            viewVariant={"login"}
-            onClick={() => setCurrentUser(undefined)}>
-        </Button>}
-        <div>{currentUser?.username}</div>
+        {currentUser ? (<>
+                <span>{currentUser.username}</span>
+                <Button
+                    text={"Logout"}
+                    viewVariant={"login"}
+                    onClick={() => setCurrentUser(undefined)}>
+                </Button>
+            </>) :
+            (<LoginButtonAndPortal/>)
+        }
     </div>
 }
