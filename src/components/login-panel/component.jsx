@@ -1,5 +1,5 @@
 import {Button} from "../button/component.jsx";
-import {useContext, useState} from "react";
+import {useContext, useLayoutEffect, useRef, useState} from "react";
 import {UserContext} from "../../contexts/user.js";
 import {createPortal} from "react-dom";
 import ModalContent from "../login-modal/modal-content.jsx";
@@ -7,6 +7,11 @@ import ModalContent from "../login-modal/modal-content.jsx";
 export const LoginPanel = () => {
     const {currentUser, setCurrentUser} = useContext(UserContext);
     const [showModal, setShowModal] = useState(false);
+    const modalContainer = useRef();
+    
+    useLayoutEffect(() => {
+        modalContainer.current = document.getElementById("modal-container");
+    }, []);
 
     return <div>
         {currentUser ? (<>
@@ -25,7 +30,7 @@ export const LoginPanel = () => {
                 </Button>
                 {showModal && createPortal(
                     <ModalContent onClose={() => setShowModal(false)}/>,
-                    document.getElementById("modal-container")
+                    modalContainer.current
                 )}
             </>)
         }
