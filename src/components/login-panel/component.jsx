@@ -1,10 +1,12 @@
 import {Button} from "../button/component.jsx";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {UserContext} from "../../contexts/user.js";
-import LoginButtonAndPortal from "../login-modal/component.jsx";
+import {createPortal} from "react-dom";
+import ModalContent from "../login-modal/modal-content.jsx";
 
 export const LoginPanel = () => {
     const {currentUser, setCurrentUser} = useContext(UserContext);
+    const [showModal, setShowModal] = useState(false);
 
     return <div>
         {currentUser ? (<>
@@ -15,7 +17,17 @@ export const LoginPanel = () => {
                     onClick={() => setCurrentUser(undefined)}>
                 </Button>
             </>) :
-            (<LoginButtonAndPortal/>)
+            (<>
+                <Button
+                    text={"Login"}
+                    viewVariant={"login"}
+                    onClick={() => setShowModal(true)}>
+                </Button>
+                {showModal && createPortal(
+                    <ModalContent onClose={() => setShowModal(false)}/>,
+                    document.getElementById("modal-container")
+                )}
+            </>)
         }
     </div>
 }
