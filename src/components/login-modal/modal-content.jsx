@@ -44,34 +44,37 @@ export default function ModalContent({onClose}) {
 
     return (
         createPortal(
-            <div className={styles.modal}>
-                <form>
+            <>
+                <div onClick={onClose} className={styles.overlay}/>
+                <div className={styles.modal}>
+                    <form>
+                        <div>
+                            <label htmlFor="username">Login</label>
+                            <input
+                                type="text"
+                                id="username"
+                                value={userFromReducer?.username}
+                                onChange={(event) => dispatch({type: "setUsername", payload: event.target.value})}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="email">Email</label>
+                            <input
+                                type="text"
+                                id="email"
+                                value={userFromReducer?.email}
+                                onChange={(event) => dispatch({type: "setEmail", payload: event.target.value})}
+                            />
+                        </div>
+                    </form>
                     <div>
-                        <label htmlFor="username">Login</label>
-                        <input
-                            type="text"
-                            id="username"
-                            value={userFromReducer?.username}
-                            onChange={(event) => dispatch({type: "setUsername", payload: event.target.value})}
-                        />
+                        <button onClick={setUserInContextAndCloseModal}>Login</button>
                     </div>
                     <div>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="text"
-                            id="email"
-                            value={userFromReducer?.email}
-                            onChange={(event) => dispatch({type: "setEmail", payload: event.target.value})}
-                        />
+                        <button onClick={onClose}>Cancel</button>
                     </div>
-                </form>
-                <div>
-                    <button onClick={setUserInContextAndCloseModal}>Login</button>
                 </div>
-                <div>
-                    <button onClick={onClose}>Cancel</button>
-                </div>
-            </div>,
+            </>,
             modalContainer.current
         )
     );
