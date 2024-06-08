@@ -1,16 +1,11 @@
 import styles from "./styles.module.scss";
-import {useContext, useLayoutEffect, useReducer, useRef} from "react";
+import {useContext, useReducer, useRef} from "react";
 import {UserContext} from "../../contexts/user.js";
 import {createPortal} from "react-dom";
 
 export default function ModalContent({onClose}) {
 
-    const modalContainer = useRef();
-
-    useLayoutEffect(() => {
-        modalContainer.current = document.getElementById("modal-container");
-        console.log("element found by id modal-conatainer: ", modalContainer.current)
-    }, []);
+    const modalContainer = useRef(document.getElementById("modal-container"));
 
     const BASE_INPUT_STATE = {username: "", email: ""};
 
@@ -77,7 +72,7 @@ export default function ModalContent({onClose}) {
                     <button onClick={onClose}>Cancel</button>
                 </div>
             </div>,
-            document.body
+            modalContainer.current
         )
     );
 }
