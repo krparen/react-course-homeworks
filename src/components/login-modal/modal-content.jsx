@@ -1,8 +1,16 @@
 import styles from "./styles.module.scss";
-import {useContext, useReducer} from "react";
+import {useContext, useLayoutEffect, useReducer, useRef} from "react";
 import {UserContext} from "../../contexts/user.js";
+import {createPortal} from "react-dom";
 
 export default function ModalContent({onClose}) {
+
+    const modalContainer = useRef();
+
+    useLayoutEffect(() => {
+        modalContainer.current = document.getElementById("modal-container");
+        console.log("element found by id modal-conatainer: ", modalContainer.current)
+    }, []);
 
     const BASE_INPUT_STATE = {username: "", email: ""};
 
@@ -40,33 +48,36 @@ export default function ModalContent({onClose}) {
     }
 
     return (
-        <div className={styles.modal}>
-            <form>
+        createPortal(
+            <div className={styles.modal}>
+                <form>
+                    <div>
+                        <label htmlFor="username">Login</label>
+                        <input
+                            type="text"
+                            id="username"
+                            value={userFromReducer?.username}
+                            onChange={(event) => dispatch({type: "setUsername", payload: event.target.value})}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="text"
+                            id="email"
+                            value={userFromReducer?.email}
+                            onChange={(event) => dispatch({type: "setEmail", payload: event.target.value})}
+                        />
+                    </div>
+                </form>
                 <div>
-                    <label htmlFor="username">Login</label>
-                    <input
-                        type="text"
-                        id="username"
-                        value={userFromReducer?.username}
-                        onChange={(event) => dispatch({type: "setUsername", payload: event.target.value})}
-                    />
+                    <button onClick={setUserInContextAndCloseModal}>Login</button>
                 </div>
                 <div>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="text"
-                        id="email"
-                        value={userFromReducer?.email}
-                        onChange={(event) => dispatch({type: "setEmail", payload: event.target.value})}
-                    />
+                    <button onClick={onClose}>Cancel</button>
                 </div>
-            </form>
-            <div>
-                <button onClick={setUserInContextAndCloseModal}>Login</button>
-            </div>
-            <div>
-                <button onClick={onClose}>Cancel</button>
-            </div>
-        </div>
+            </div>,
+            document.body
+        )
     );
 }
