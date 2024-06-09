@@ -7,16 +7,14 @@ import {restaurants} from "../../../constants/mock.js";
 import {ReviewForm} from "../../review-form/component.jsx";
 import {UserContext} from "../../../contexts/user.js";
 import {useSelector} from "react-redux";
-import {selectRestaurantIds} from "../../../redux/entities/restaurant/selectors.js";
+import {selectRestaurantById, selectRestaurantIds} from "../../../redux/entities/restaurant/selectors.js";
 
 export const RestaurantPage = () => {
     const restaurantIds = useSelector(selectRestaurantIds);
     
     const [activeRestaurantId, setActiveRestaurantId] = useState(restaurantIds[0]);
-
-    const activeRestaurant = restaurants.find(
-        ({id}) => id === activeRestaurantId
-    );
+    
+    const activeRestaurant = useSelector((state) => selectRestaurantById(state, activeRestaurantId));
 
     const {currentUser} = useContext(UserContext);
 
