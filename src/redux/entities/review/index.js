@@ -6,7 +6,7 @@ export const reviewSlice = createSlice({
     initialState: {
         entities: normalizedReviews.reduce((acc, review) => {
             acc[review.id] = review;
-            return review;
+            return acc;
         }, {}),
         
         ids: normalizedReviews.map(({id}) => id)
