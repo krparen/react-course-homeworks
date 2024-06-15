@@ -3,8 +3,12 @@ import {Reviews} from "../reviews/component.jsx";
 import {useSelector} from "react-redux";
 import {selectDishById} from "../../redux/entities/dish/selectors.js";
 import {selectReviewById} from "../../redux/entities/review/selectors.js";
+import {selectRestaurantById} from "../../redux/entities/restaurant/selectors.js";
 
-export const Restaurant = ({restaurant}) => {
+export const Restaurant = ({restaurantId}) => {
+
+    const restaurant = useSelector((state) => selectRestaurantById(state, restaurantId));
+    
     const denormalizedMenu = useSelector((state) => {
             return restaurant.menu.map(dishId => selectDishById(state, dishId));
         }
