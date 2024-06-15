@@ -21,7 +21,8 @@ export const RestaurantPage = () => {
     return (
         <div>
             <Header/>
-            <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}/>
+            {/*TODO: прокинуть id-шники ресторанов в RestaurantTabs и написать там их обработку.*/}
+            <RestaurantTabs restaurantIds={restaurantIds} onSelect={setActiveRestaurantId}/>
             <Restaurant restaurant={activeRestaurant}/>
             {currentUser !== undefined && <ReviewForm/>}
             <Footer/>
