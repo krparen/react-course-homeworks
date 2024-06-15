@@ -18,7 +18,6 @@ export const RestaurantPage = () => {
     return (
         <div>
             <Header/>
-            {/*TODO: прокинуть id-шники ресторанов в RestaurantTabs и написать там их обработку.*/}
             <RestaurantTabs restaurantIds={restaurantIds} onSelect={setActiveRestaurantId}/>
             <Restaurant restaurantId={activeRestaurantId}/>
             {currentUser !== undefined && <ReviewForm/>}
