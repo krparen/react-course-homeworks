@@ -1,14 +1,18 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import axios from "axios";
 import {ROOT_URL} from "../../../../constants/api-urls.js";
 import {selectRestaurantIds} from "../selectors.js";
 
 export const getRestaurants = createAsyncThunk(
     "restaurant/getRestaurants",
     async () => {
-        let response =  await axios.get(ROOT_URL + "/restaurants");
-        console.log("axios reply: ", response);
-        return response.data;
+        const response = await fetch(ROOT_URL + "/restaurants");
+        console.log("fetch reply: ", response);
+        return response.json();
     },
-    {condition: (_, {getState}) => !selectRestaurantIds((getState()))?.length}
+    {
+        condition: (_, {getState}) => {
+            console.log("evaluating condition in getRestaurants...");
+            return !selectRestaurantIds((getState()))?.length;
+        }
+    }
 );
