@@ -14,12 +14,21 @@ export const RestaurantPage = () => {
 
     const [requestId, setRequestId] = useState();
     const isLoading = useSelector(
-        (state) => requestId && selectIsLoading(state, requestId)
+        (state) => {
+            console.log("current request id value: ", requestId);
+            const isTrulyLoading = selectIsLoading(state, requestId);
+            console.log("selectIsLoading on evaluation moment: ", isTrulyLoading);
+            const result = !requestId || isTrulyLoading;
+            console.log("result of isLoading evaluation: ", result)
+            return result;
+        }
     )
 
     const dispatch = useDispatch();
     useEffect(() => {
-        setRequestId(dispatch(getRestaurants()).requestId)
+        const requestId = dispatch(getRestaurants()).requestId;
+        console.log("request id : ", requestId)
+        setRequestId(requestId);
     }, [dispatch])
 
     const restaurantIds = useSelector(selectRestaurantIds);

@@ -9,6 +9,7 @@ export const restaurantSlice = createSlice({
     initialState: entityAdapter.getInitialState(),
     extraReducers: (builder) =>
         builder.addCase(getRestaurants.fulfilled, (state, {payload}) => {
+            console.log("payload when getRestaruants fulfilled: ", payload);
             entityAdapter.setAll(state, payload);
         }),
 });
