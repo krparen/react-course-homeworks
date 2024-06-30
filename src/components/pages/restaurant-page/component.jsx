@@ -24,18 +24,21 @@ export const RestaurantPage = () => {
         }
     )
 
+    const [activeRestaurantId, setActiveRestaurantId] = useState();
+    const restaurantIds = useSelector(selectRestaurantIds);
+    
+    console.log("restaurant ids from selector: ", restaurantIds);
+    
+    console.log("active restaurant id = ", activeRestaurantId);
+
+    const {currentUser} = useContext(UserContext);
+
     const dispatch = useDispatch();
     useEffect(() => {
         const requestId = dispatch(getRestaurants()).requestId;
         console.log("request id : ", requestId)
         setRequestId(requestId);
     }, [dispatch])
-
-    const restaurantIds = useSelector(selectRestaurantIds);
-
-    const [activeRestaurantId, setActiveRestaurantId] = useState(restaurantIds[0]);
-
-    const {currentUser} = useContext(UserContext);
 
     return (
         <div>

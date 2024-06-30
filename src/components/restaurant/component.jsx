@@ -10,6 +10,8 @@ export const Restaurant = ({restaurantId}) => {
     const restaurant = useSelector((state) => selectRestaurantById(state, restaurantId));
     
     const denormalizedMenu = useSelector((state) => {
+            console.log("current restaurant id =", restaurantId)
+            console.log("current restaurant =", restaurant)
             return restaurant.menu.map(dishId => selectDishById(state, dishId));
         }
     );
