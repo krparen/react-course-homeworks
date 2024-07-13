@@ -6,12 +6,12 @@ export const getRestaurants = createAsyncThunk(
     "restaurant/getRestaurants",
     async () => {
         const response = await fetch(ROOT_URL + "/restaurants");
-        console.log("fetch reply: ", response);
+        console.log("INSIDE GET RESTAURANTS: fetch reply: ", response);
         return response.json();
     },
     {
         condition: (_, {getState}) => {
-            console.log("evaluating condition in getRestaurants...");
+            console.log("INSIDE GET RESTAURANTS: evaluating condition in getRestaurants...");
             return !selectRestaurantIds((getState()))?.length;
         }
     }

@@ -15,30 +15,33 @@ export const RestaurantPage = () => {
     const [requestId, setRequestId] = useState();
     const isLoading = useSelector(
         (state) => {
-            console.log("current request id value: ", requestId);
+            console.log("INSIDE USE SELECTOR: current request id value: ", requestId);
             const isTrulyLoading = selectIsLoading(state, requestId);
-            console.log("selectIsLoading on evaluation moment: ", isTrulyLoading);
+            console.log("INSIDE USE SELECTOR: selectIsLoading on evaluation moment: ", isTrulyLoading);
             const result = !requestId || isTrulyLoading;
-            console.log("result of isLoading evaluation: ", result)
+            console.log("INSIDE USE SELECTOR: result of isLoading evaluation: ", result)
             return result;
         }
     )
 
-    const [activeRestaurantId, setActiveRestaurantId] = useState();
-    const restaurantIds = useSelector(selectRestaurantIds);
+    const restaurantIds = useSelector((state) => selectRestaurantIds(state));
     
-    console.log("restaurant ids from selector: ", restaurantIds);
-    
-    console.log("active restaurant id = ", activeRestaurantId);
+    console.log("JUST PAGE: restaurant ids from selector: ", restaurantIds);
 
     const {currentUser} = useContext(UserContext);
+    
+    const [activeRestaurantId, setActiveRestaurantId] = useState();
 
     const dispatch = useDispatch();
+    
     useEffect(() => {
         const requestId = dispatch(getRestaurants()).requestId;
-        console.log("request id : ", requestId)
+        console.log("INSIDE USE EFFECT request id : ", requestId)
         setRequestId(requestId);
-    }, [dispatch])
+        setActiveRestaurantId(restaurantIds.size > 0 ? restaurantIds[0] : null);
+    }, [dispatch, restaurantIds]);
+    
+    console.log("JUST PAGE: activeRestaurantId: ", activeRestaurantId);
 
     return (
         <div>
