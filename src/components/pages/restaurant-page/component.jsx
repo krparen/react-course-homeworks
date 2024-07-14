@@ -51,7 +51,7 @@ export const RestaurantPage = () => {
                 (<>
                     <Header/>
                     <RestaurantTabs restaurantIds={restaurantIds} onSelect={setActiveRestaurantId}/>
-                    <Restaurant restaurantId={activeRestaurantId}/>
+                    <Restaurant restaurantId={activeRestaurantId ? activeRestaurantId : restaurantIds[0]}/>
                     {currentUser !== undefined && <ReviewForm/>}
                     <Footer/>
                 </>)
