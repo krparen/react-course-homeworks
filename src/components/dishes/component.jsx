@@ -8,7 +8,7 @@ export const Dishes = ({dishes: dishes}) => {
             <ul>
                 {dishes.map(dish =>
                     <li>
-                        <div><Dish dish={dish}/></div>
+                        <div><Dish dishId={dish.id}/></div>
                     </li>
                 )}
             </ul>

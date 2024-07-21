@@ -1,7 +1,11 @@
 import {Counter} from "../counter/component.jsx";
 import {useState} from "react";
+import {useSelector} from "react-redux";
+import {selectDishById} from "../../redux/entities/dish/selectors.js";
 
-export const Dish = ({dish}) => {
+export const Dish = ({dishId}) => {
+    
+    const dish = useSelector(state => selectDishById(state, dishId));
     
     const [counter, setCounter] = useState(0);
     
