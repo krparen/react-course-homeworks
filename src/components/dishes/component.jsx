@@ -1,5 +1,4 @@
 import {Dish} from "../dish/component.jsx";
-import {Counter} from "../counter/component.jsx";
 
 export const Dishes = ({dishes: dishes}) => {
     return (
@@ -7,7 +6,7 @@ export const Dishes = ({dishes: dishes}) => {
             <h3>Меню</h3>
             <ul>
                 {dishes.map(dish =>
-                    <li>
+                    <li key={"dish" + dish.id}>
                         <div><Dish dishId={dish.id}/></div>
                     </li>
                 )}
