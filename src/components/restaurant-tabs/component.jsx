@@ -10,7 +10,7 @@ export const RestaurantTabs = ({restaurantIds, onSelect}) => {
   
   return <div>
     {restaurants.map(
-        restaurant => <Tab title={restaurant.name} onClick={() => onSelect(restaurant.id)}/>
+        restaurant => <Tab key={"restaurantTab" + restaurant.id} title={restaurant.name} onClick={() => onSelect(restaurant.id)}/>
     )}
   </div>
 }

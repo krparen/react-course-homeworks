@@ -1,15 +1,26 @@
 import {Counter} from "../counter/component.jsx";
-import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {selectDishById} from "../../redux/entities/dish/selectors.js";
+import {decrement, increment, selectProductAmountById} from "../../redux/ui/cart/index.js";
 
-export const Dish = ({dish}) => {
+export const Dish = ({dishId}) => {
     
-    const [counter, setCounter] = useState(0);
+    const dish = useSelector(state => selectDishById(state, dishId));
+    const amount = useSelector(state => selectProductAmountById(state, dishId));
+    
+    const dispatch = useDispatch();
     
     return (
         <div>
             <div>{dish.name}</div>
             <div>{dish.price}</div>
-            <Counter value={counter} min={0} max={5} onChange={setCounter}/>
+            <Counter
+                value={amount}
+                min={0} 
+                max={5} 
+                onIncrement={() => dispatch(increment(dishId))}
+                onDecrement={() => dispatch(decrement(dishId))}
+            />
         </div>
     );
 };

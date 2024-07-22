@@ -1,11 +1,11 @@
 import {Button} from "../button/component.jsx";
 
-export const Counter = ({value, min = 0, max = 5, onChange}) => {
+export const Counter = ({value, min = 0, max = 5, onIncrement, onDecrement}) => {
     
     return <div>
         <Button
             text={"-"}
-            onClick={() => onChange(value - 1)}
+            onClick={() => onDecrement()}
             isDisabled={value <= min}
             viewVariant={"counter"}
         >
@@ -13,7 +13,7 @@ export const Counter = ({value, min = 0, max = 5, onChange}) => {
         {value}
         <Button
             text={"+"}
-            onClick={() => onChange(value + 1)}
+            onClick={() => onIncrement()}
             isDisabled={value >= max}
             viewVariant={"counter"}
         >

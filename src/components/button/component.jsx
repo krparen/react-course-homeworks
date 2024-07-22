@@ -1,5 +1,6 @@
 import styles from "./styles.module.scss";
 import classNames from "classnames";
+import {forwardRef} from "react";
 
 const ButtonViewVariant = {
     ["tab"]: styles.tab,
@@ -7,13 +8,21 @@ const ButtonViewVariant = {
     ["login"]: styles.login,
 }
 
-export const Button = ({text, onClick, isDisabled, viewVariant}) => {
-    return <button
-                className={classNames(ButtonViewVariant[viewVariant] || ButtonViewVariant["tab"])}
-                onClick={onClick}
-                disabled={isDisabled}
-            >
-                {text}
-            </button>
-        ;
-};
+export const Button = forwardRef(function Button(
+    {
+        text,
+        onClick,
+        isDisabled,
+        viewVariant
+    }, ref) {
+    return (
+        <button
+            ref={ref}
+            className={classNames(ButtonViewVariant[viewVariant] || ButtonViewVariant["tab"])}
+            onClick={onClick}
+            disabled={isDisabled}
+        >
+            {text}
+        </button>
+    );
+});
