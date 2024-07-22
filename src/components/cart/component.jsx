@@ -1,9 +1,11 @@
+import {Dish} from "../dish/component.jsx";
+
 export const Cart = ({dishIds}) => {
     return (
         <div>
             {dishIds.length
-                ?  "Заглушка блюд в корзине" 
-                : "Заглушка блюд в корзине" }
+                ?  dishIds.map(dishId => <Dish key={"cartdish" + dishId} dishId={dishId}/>) 
+                : "Empty" }
         </div>
     );
 }
